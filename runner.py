@@ -1,6 +1,14 @@
 import os
+import ConfigParser
 if __name__=="__main__":
-	home_dir=os.environ("HOME")
+	#home_dir=os.environ("HOME")
+	parser=ConfigParser.SafeConfigParser()
+	parser.read("./config.conf")
+	lst=parser.items("default")
+	diksh=dict()
+	for k,v in lst:
+		diksh[k]=v
+	home_dir=diksh["home_dir"]
 	count=os.system("ps -ef |grep -v 'grep' | grep -c 'ESAlerter'")
 	print count
 	if count:

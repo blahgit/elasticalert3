@@ -5,10 +5,17 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 import sys
 import yaml
 import os.path
-
+import ConfigParser
 
 app = Flask(__name__)
-home_dir=os.ewnviron("HOME")
+#home_dir=os.environ("HOME")
+parser=ConfigParser.SafeConfigParser()
+parser.read("../config.conf")
+lst=parser.items("default")
+diksh=dict()
+for k,v in lst:
+	diksh[k]=v
+home_dir=diksh["home_dir"]
 base=home_dir+"/elasticalert/"
 #base_dir="../"
 
