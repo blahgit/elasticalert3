@@ -5,7 +5,7 @@ def update_config(fname, path):
     with open(fname) as f:
         d=yaml.load(f)
         print d
-        parser=ConfigParser.SafeConfigParser(path)
+        parser=ConfigParser.SafeConfigParser()
         parser.read(path)
         lst=parser.items("elasticsearch")
         diksh=dict()
