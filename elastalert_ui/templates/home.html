@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<form role="form" name="alert_form" id="alert_form" class="form-horizontal" method="post">
+
+   <div class = "form-group">
+       <label for = "es_host" class = "col-sm-2 control-label">Elastic Search Host Name</label>
+       <div class = "col-sm-10">
+          <input type = "text" class = "form-control" name = "es_host" {% if es_host %} {{"value=%s" %es_host}} {% endif %} placeholder = "Enter name of elastic search cluster (default: localhost)">
+       </div>
+       <p><font color=red> {% if "es_host_error" in errors %} {{"%s" %(errors["es_host_error"])}} {% endif %} </font></p>
+    </div>  <!--end-->
+
+    <div class = "form-group">
+        <label for = "es_port" class = "col-sm-2 control-label">Elastic Search Port Number</label>
+        <div class = "col-sm-10">
+           <input type = "text" class = "form-control" name = "es_port" {% if es_port %} {{"value=%s" %es_port}} {% endif %} placeholder = "Enter port for elastic search cluster (default: 9200)">
+        </div>
+        <p><font color=red> {% if "es_port_error" in errors %} {{"%s" %(errors["es_port_error"])}} {% endif %} </font></p>
+
+     </div>  <!--end-->
+
+     <div class = "form-group">
+         <label for = "name" class = "col-sm-2 control-label">Enter a name for the rule </label>
+         <div class = "col-sm-10">
+            <input type = "text" class = "form-control" name = "name" placeholder = "Rule name must be unique and can contain alphabets/numbers/_ characters only.">
+         </div>
+         <p><font color=red> {% if "name_error" in errors %} {{"%s" %(errors["name_error"])}} {% endif %} </font></p>
+      </div>  <!--end-->
+
+      <div class = "form-group">
+          <label for = "index" class = "col-sm-2 control-label">Index Type</label>
+          <div class = "col-sm-10">
+             <input type = "text" class = "form-control" name = "index" placeholder = "Enter name of Index (regex allowed)">
+          </div>
+          <p><font color=red> {% if "index_error" in errors %} {{"%s" %(errors["index_error"])}} {% endif %} </font></p>
+
+       </div>  <!--end-->
+
+       <div class = "form-group">
+           <label for = "num_events" class = "col-sm-2 control-label">Alert threshold to trigger action</label>
+           <div class = "col-sm-10">
+              <input type = "text" class = "form-control" name = "num_events" placeholder = "Alert when this many documents matching the query occur within a timeframe">
+           </div>
+           <p><font color=red> {% if "num_events_error" in errors %} {{"%s" %(errors["num_events_error"])}} {% endif %} </font></p>
+        </div>  <!--end-->
+
+
+   <div class = "form-group">
+       <label for = "query" class = "col-sm-2 control-label">Alert Query</label>
+
+       <div class = "col-sm-10">
+          <input type = "text" class = "form-control" name = "query" placeholder = "Enter the alert condition">
+       </div>
+       <p><font color=red> {% if "query_error" in errors %} {{"%s" %(errors["query_error"])}} {% endif %} </font></p>
+    </div>  <!--end-->
+
+
+<button type="submit" class="btn btn-default">Submit</button>
+
+
+</form>
+  </div>
+
+</body>
+</html>

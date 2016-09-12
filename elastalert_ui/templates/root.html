@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ES Alerter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Search.Alert</h2>
+  <ul class="nav nav-tabs">
+    <li  {% if tab==1 %} {{'class = active'}} {% endif %}><a data-toggle="tab" href="#home">CREATE</a></li>
+    <li {% if tab==2 %} {{'class = active'}} {% endif %} ><a data-toggle="tab" href="#list">LIST</a></li>
+    <li {% if tab==3 %} {{'class = active'}} {% endif %}><a data-toggle="tab" href="#delete">DELETE</a></li>
+    <li  {% if tab==4 %} {{'class = active'}} {% endif %}><a data-toggle="tab" href="#menu3">TODO</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" {% if tab==1 %} class="tab-pane fade in active" {% else %} class="tab-pane fade" {% endif %} >
+
+      <div>
+      <h3 style="text-align: center;"> Create A Rule </h3>
+    </div>
+
+      <div class="container">
+      <form role="form" name="alert_form" id="alert_form" class="form-horizontal" method="post">
+
+        {% if create_response %}
+          {% if create_success==1 %}
+            <p style="color:green;"> {{create_response}} </p>
+          {% elif create_success==0 %}
+              <p style="color:red;"> {{create_response}} </p>
+            {% endif %}
+          {% endif %}
+
+        <div class = "form-group">
+            <label for = "name" class = "col-sm-2 control-label">Rule Name </label>
+            <div class = "col-sm-10">
+               <input type = "text" class = "form-control" style="width: 550px;"  name = "name" {% if name %} {{"value=%s" %name}} {% endif %} placeholder = "Rule name must be unique and can contain alphabets/numbers/_ characters only">
+            <p><font color=red> {% if "name_error" in errors %} {{"%s" %(errors["name_error"])}} {% endif %} </font></p>
+            </div>
+         </div>  <!--end-->
+
+         <div class = "form-group">
+             <label for = "es_host" class = "col-sm-2 control-label ">ESearch Host Name</label>
+             <div class = "col-sm-10">
+                <input type = "text" size="4" style="width: 400px;"  class = "form-control" name = "es_host" {% if es_host %} {{"value=%s" %es_host}} {% endif %} placeholder = "Enter name of elastic search cluster (default: localhost)">
+                 <p><font color=red> {% if "es_host_error" in errors %} {{"%s" %(errors["es_host_error"])}} {% endif %} </font></p>
+             </div>
+          </div>  <!--end-->
+
+          <div class = "form-group">
+              <label for = "es_port" class = "col-sm-2 control-label">ESearch Port Number</label>
+              <div class = "col-sm-10">
+                 <input type = "text" class = "form-control" style="width: 100px;" name = "es_port" {% if es_port %} {{"value=%s" %es_port}} {% endif %} placeholder = "Enter port for elastic search cluster (default: 9200)">
+                 <p><font color=red> {% if "es_port_error" in errors %} {{"%s" %(errors["es_port_error"])}} {% endif %} </font></p>
+              </div>
+           </div>  <!--end-->
+
+
+
+            <div class = "form-group">
+                <label for = "index" class = "col-sm-2 control-label">Index Type</label>
+                <div class = "col-sm-10">
+                   <input type = "text" class = "form-control" style="width: 500px;" name = "index" {% if index %} {{"value=%s" %index}} {% endif %} placeholder = "Enter name of Index (regex allowed)">
+                   <p><font color=red> {% if "index_error" in errors %} {{"%s" %(errors["index_error"])}} {% endif %} </font></p>
+                </div>
+             </div>  <!--end-->
+
+             <div class = "form-group">
+                 <label for = "num_events" class = "col-sm-2 control-label">Alert threshold</label>
+                 <div class = "col-sm-10">
+                    <input type = "text" class = "form-control" style="width: 200px;" name = "num_events" {% if num_events %} {{"value=%s" %num_events}} {% endif %} placeholder = "Threshold to trigger alert">
+                    <p><font color=red> {% if "num_events_error" in errors %} {{"%s" %(errors["num_events_error"])}} {% endif %} </font></p>
+                 </div>
+              </div>  <!--end-->
+
+
+         <div class = "form-group">
+
+           <!-- TODO:
+           <div class="dropdown">
+           <select name="filter_type" class="btn btn-default dropdown-toggle">
+             <option value="Cheese">Old Cheese</option>
+<option value="exact_match">Exact Match</option>
+
+<option value="Bread">Hot Bread</option>
+</select>
+</div>
+
+
+           <div class="dropdown">
+   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter Type
+   <span class="caret"></span></button>
+   <ul class="dropdown-menu">
+     <li><a href="#"> Exact Match</a></li>
+     <li><a href="#">Exact/Partial Match</a></li>
+     <li><a href="#">Multi-value Match</a></li>
+     <li><a href="#">Wildcard</a></li>
+     <li><a href="#">Range</a></li>
+     <li><a href="#"></a></li>
+
+   </ul>
+ </div>
+-->
+             <label for = "query" class = "col-sm-2 control-label">Alert Query</label>
+             <div class = "col-sm-10">
+                <input type = "text" class = "form-control" style="width: 700px;" name = "query" {% if query %} {{"value=%s" %query}} {% endif %} placeholder = "Enter the alert condition">
+                 <p><font color=red> {% if "query_error" in errors %} {{"%s" %(errors["query_error"])}} {% endif %} </font></p>
+             </div>
+          </div>  <!--end-->
+      <div class="container col-sm-5">
+      </div>
+      <div class="container col-sm-3">
+      <div class = "form-group">
+      <button type="submit" name="Create" class="btn" >Create</button>
+        </div>  <!--end-->
+      </div>
+
+      </form>
+        </div>
+    </div>
+    <div id="list" {% if tab==2 %} class="tab-pane fade in active" {% else %} class="tab-pane fade" {% endif %}>
+      <div>
+      <h3 style="text-align: center;"> Existing Alerting Rules </h3>
+    </div>
+    <div class="container" style="text-align:center">
+      <br>
+      <br>
+
+      {% for rule in rules %}
+      <button type="button" class="btn btn-default" name="stub">{{rule}}</button>
+      <!--<form role="form" id="other_form" class="form-horizontal" method="post" action="delete">
+
+  <button type="submit" class="btn btn-default" {{"name=bt_%s" %(rule)}} >{{rule}}</button>
+</form>
+
+      {% if rule in rule_rolldown_list %}
+        {{ "OK" }}
+      {% endif %}
+      <button type="button" class="btn btn-primary active">{{rule}}</button>
+      -->
+      <br>
+      <br>
+      {% endfor %}
+    </div>
+
+      <p></p>
+    </div>
+    <div id="delete" {% if tab==3 %} class="tab-pane fade in active" {% else %} class="tab-pane fade" {% endif %}>
+
+      <div>
+      <h3 style="text-align: center;"> Delete A Rule </h3>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+      <div class="container">
+        {% if success==True %}
+        <p><font color="green"> {% if message %} {{"%s" %(message)}} {% endif %} </font></p>
+        {% endif %}
+
+        <div class="container col-sm-2">
+        </div>
+        <div class="container col-sm-5">
+      <form role="form" name="delete_form" id="delete_form" class="form-horizontal" method="post">
+      <div class = "form-group">
+          <label for = "rule_name" class = "col-sm-2 control-label "></label>
+          <div class = "col-sm-10">
+             <input type = "text" class = "form-control" style="width: 500px;"  name = "rule_name" placeholder = "Enter name of rule to delete">
+               {% if success==False %}
+              <p><font color=red> {% if message %} {{"%s" %(message)}} {% endif %} </font></p>
+              {% endif %}
+
+          </div>
+       </div>  <!--end-->
+     </div>
+       <div class="col-sm-2">
+       </div>
+
+
+
+       <div class="container col-sm-1">
+       <div class = "form-group">
+       <button type="submit" class="btn" name="Delete">Delete</button>
+         </div>  <!--end-->
+       </div>
+       </form>
+         </div>
+    </div>
+
+    <div id="TODO" {% if tab==4 %} class="tab-pane fade in active" {% else %} class="tab-pane fade" {% endif %}>
+    <h3></h3>
+    <p></p>
+  </div>
+
+  </div>
+</div>
+
+</body>
+</html>

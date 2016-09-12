@@ -1,0 +1,45 @@
+
+es_host: a
+
+es_port: 100
+
+# (Required)
+# Rule name, must be unique
+name: foo
+
+
+# Type of alert.
+# the frequency rule type alerts when num_events events occur with timeframe time
+type: frequency
+
+
+# Index to search, wildcard supported
+index: dcds
+
+# (Required, frequency specific)
+# Alert when this many documents matching the query occur within a timeframe
+num_events: 1
+
+# (Required, frequency specific)
+# num_events must occur within this amount of time to trigger an alert
+timeframe:
+  hours: 4
+
+# (Required)
+# A list of elasticsearch filters used for find events
+# These filters are joined with AND and nested in a filtered query
+# For more info: http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html
+filter:
+- query:
+    query_string:
+        query: "bar"
+
+# (Required)
+# The alert is use when a match is found
+alert:
+- "command"
+command: ["/usr/bin/python", "/home/ec2-user/alerter.py"]
+# (required, email specific)
+# a list of email addresses to send alerts to
+#email:
+#- "kishore.venkatswammy@citrix.com"

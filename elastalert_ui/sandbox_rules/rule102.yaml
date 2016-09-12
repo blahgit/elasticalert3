@@ -1,0 +1,14 @@
+alert:
+- command
+command:
+- /usr/bin/python
+- /home/ec2-user/alerter.py
+es_host: localhost
+es_port: 9200
+filter: null
+index: logstash-*
+name: rule102
+num_events: 1
+timeframe:
+  hours: 4
+type: frequency

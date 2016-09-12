@@ -1,0 +1,6 @@
+[console_scripts]
+elastalert = elastalert.elastalert:main
+elastalert-create-index = elastalert.create_index:main
+elastalert-rule-from-kibana = elastalert.rule_from_kibana:main
+elastalert-test-rule = elastalert.test_rule:main
+

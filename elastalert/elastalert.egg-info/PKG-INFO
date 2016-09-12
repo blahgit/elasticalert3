@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: elastalert
+Version: 0.0.95
+Summary: Runs custom filters on Elasticsearch and alerts on matches
+Home-page: UNKNOWN
+Author: Quentin Long
+Author-email: qlo@yelp.com
+License: Copyright 2014 Yelp
+Description: UNKNOWN
+Platform: UNKNOWN

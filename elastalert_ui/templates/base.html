@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	{% block head %}
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Tech Ops - DBA Self Service Tool">
+	
+    <title>ESearch {% block title %}{% endblock %}</title>
+	<!-- Use the below link in case you want to use the CDN. I have downloaded a local copy
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    -->
+	<link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/pure-min-0.6.0.css')}}">	
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="/static/assets/css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/layouts/side-menu.css')}}">
+    <!--<![endif]-->
+	<link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/dbselfservice.css')}}">
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <span class="pure-menu-heading" href="#">ASGOps</span>
+
+            
+        </div>
+    </div>
+    <div id="main">
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+				<img class="pure-img-responsive logo" src="{{url_for('static', filename='assets/img/citrix-logo.jpg')}}" alt="Citrix Logo"/>
+			</div>
+	        <div class="header pure-u-3-5">
+	            <h1>ES Tool</h1>
+	            <h2>Search better.</h2>
+	        </div>
+			
+		</div>
+	{% endblock %}
+
+<script src="{{url_for('static', filename='assets/js/ui.js')}}"></script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+.error
+{
+	font-size: 1.3em;
+	padding: 1em;
+	text-align: center;
+	color: #ff0000;
+	white-space: nowrap;
+	width: auto;
+	word-wrap: normal;
+}

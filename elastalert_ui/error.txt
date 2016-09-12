@@ -1,0 +1,90 @@
+Successfully loaded test1
+
+
+Would have written the following documents to elastalert_status:
+
+elastalert_error - {'message': "Error running query: ConnectionError(('Connection aborted.', error(111, 'Connection refused'))) caused by: ConnectionError(('Connection aborted.', error(111, 'Connection refused')))", 'traceback': ['Traceback (most recent call last):', '  File "elastalert/elastalert.py", line 309, in get_hits', "    res = self.current_es.search(scroll=scroll_keepalive, index=index, size=rule['max_query_size'], body=query, ignore_unavailable=True, **extra_args)", '  File "/usr/lib/python2.6/site-packages/elasticsearch/client/utils.py", line 68, in _wrapped', '    return func(*args, params=params, **kwargs)', '  File "/usr/lib/python2.6/site-packages/elasticsearch/client/__init__.py", line 498, in search', '    params=params, body=body)', '  File "/usr/lib/python2.6/site-packages/elasticsearch/transport.py", line 301, in perform_request', '    status, headers, data = connection.perform_request(method, url, params, body, ignore=ignore, timeout=timeout)', '  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 67, in perform_request', "    raise ConnectionError('N/A', str(e), e)", "ConnectionError: ConnectionError(('Connection aborted.', error(111, 'Connection refused'))) caused by: ConnectionError(('Connection aborted.', error(111, 'Connection refused')))"], 'data': {'rule': 'test1'}}
+
+
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (3): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash/_search?ignore_unavailable=true&size=1 [status:N/A request:0.001s]
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 56, in perform_request
+    response = self.session.request(method, url, data=body, timeout=timeout or self.timeout)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 461, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (4): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash/_search?ignore_unavailable=true&size=1 [status:N/A request:0.001s]
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 56, in perform_request
+    response = self.session.request(method, url, data=body, timeout=timeout or self.timeout)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 461, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+Error running your filter:
+ConnectionError('N/A', "('Connection aborted.', error(111, 'Connection refused'))", ConnectionError(ProtocolError('Connection aborted.', error(111, 'Connection refused')),))
+INFO:elastalert:Note: In debug mode, alerts will be logged to console but NOT actually sent. To send them, use --verbose.
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash/_search?_source_include=%40timestamp%2C%2A&ignore_unavailable=true&scroll=30s&size=10000 [status:N/A request:0.001s]
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 56, in perform_request
+    response = self.session.request(method, url, data=body, timeout=timeout or self.timeout)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 461, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (2): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash/_search?_source_include=%40timestamp%2C%2A&ignore_unavailable=true&scroll=30s&size=10000 [status:N/A request:0.001s]
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 56, in perform_request
+    response = self.session.request(method, url, data=body, timeout=timeout or self.timeout)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 461, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (3): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash/_search?_source_include=%40timestamp%2C%2A&ignore_unavailable=true&scroll=30s&size=10000 [status:N/A request:0.001s]
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 56, in perform_request
+    response = self.session.request(method, url, data=body, timeout=timeout or self.timeout)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 461, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (4): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash/_search?_source_include=%40timestamp%2C%2A&ignore_unavailable=true&scroll=30s&size=10000 [status:N/A request:0.001s]
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/elasticsearch/connection/http_requests.py", line 56, in perform_request
+    response = self.session.request(method, url, data=body, timeout=timeout or self.timeout)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 461, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/sessions.py", line 573, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.6/site-packages/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+ERROR:root:Error running query: ConnectionError(('Connection aborted.', error(111, 'Connection refused'))) caused by: ConnectionError(('Connection aborted.', error(111, 'Connection refused')))

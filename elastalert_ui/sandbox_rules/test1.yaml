@@ -1,0 +1,20 @@
+alert:
+- email
+email:
+- kishore.venkatswammy@citrix.com
+- luis.toruno@citrix.com
+- ronny.kursawe@citrix.com
+- maya.shallouf@citrix.com
+es_host: localhost
+es_port: 9200
+filter:
+- query:
+    query_string:
+      query: foo:bar
+from_addr: elasticalert@citrix.com
+index: logstash
+name: test1
+num_events: 1
+timeframe:
+  hours: 4
+type: frequency

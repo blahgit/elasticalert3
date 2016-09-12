@@ -1,0 +1,15 @@
+argparse
+elasticsearch
+jira==0.32
+jsonschema
+mock
+python-dateutil
+PyStaticConfiguration
+pyyaml
+simplejson
+boto
+botocore
+blist
+croniter
+configparser
+aws-requests-auth

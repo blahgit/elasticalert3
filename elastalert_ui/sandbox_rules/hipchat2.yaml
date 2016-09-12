@@ -1,0 +1,16 @@
+alert:
+- hipchat
+es_host: localhost
+es_port: 9200
+filter:
+- query:
+    query_string:
+      query: fun:da
+hipchat_auth_token: bsl8Oehotv10O1qNBPdj3e6WjgYXtIw68PHu09La
+hipchat_room_id: 2816596
+index: logstash-*
+name: hipchat2
+num_events: 1
+timeframe:
+  hours: 4
+type: frequency

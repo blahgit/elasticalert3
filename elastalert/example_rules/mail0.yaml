@@ -1,0 +1,20 @@
+#es_host: search-bridgelogs-ed-fgc37p7jyn3y5l465bp7ik5lr4.us-east-1.es.amazonaws.com
+#es_port: 80
+alert:
+- email
+email:
+- kishore.venkatswammy@citrix.com
+- luis.toruno@citrix.com
+- ronny.kursawe@citrix.com
+- maya.shallouf@citrix.com
+filter:
+- query:
+    query_string:
+      query: beyond:reach
+from_addr: elasticalert@citrix.com
+index: logstash_*
+name: email_alerter
+num_events: 1
+timeframe:
+  hours: 4
+type: frequency
