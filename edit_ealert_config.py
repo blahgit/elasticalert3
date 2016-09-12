@@ -8,7 +8,9 @@ def update_config(fname, path):
         parser=ConfigParser.SafeConfigParser(path)
         parser.read(path)
         lst=parser.items("elasticsearch")
-        diksh={k:v for k,v in lst}
+        diksh=dict()
+        for k,v in lst:
+            diksh[k]=v
         d["es_host"]=diksh["host"]
         d["es_port"]=int(diksh["port"])
     with open(fname, "w") as f:
