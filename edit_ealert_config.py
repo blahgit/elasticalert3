@@ -14,7 +14,7 @@ if __name__=="__main__":
     #home="/home/kvenkatswammy"
     #home_dir=os.environ["HOME"]
     parser=ConfigParser.SafeConfigParser()
-    parser.read(path)
+    parser.read("./config.conf")
     lst=parser.items("default")
     diksh=dict()
     for k,v in lst:
