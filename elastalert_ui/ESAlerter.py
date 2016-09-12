@@ -8,16 +8,8 @@ import os.path
 import ConfigParser
 
 app = Flask(__name__)
-#home_dir=os.environ("HOME")
-parser=ConfigParser.SafeConfigParser()
-parser.read("../config.conf")
-lst=parser.items("minimum")
-diksh=dict()
-for k,v in lst:
-	diksh[k]=v
-home_dir=diksh["home_dir"]
+home_dir="/opt"
 base=home_dir+"/elasticalert/"
-#base_dir="../"
 
 def validate(es_host, es_port, name, index, num_events, query):
 	errors=dict()
