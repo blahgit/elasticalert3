@@ -11,7 +11,7 @@ app = Flask(__name__)
 #home_dir=os.environ("HOME")
 parser=ConfigParser.SafeConfigParser()
 parser.read("../config.conf")
-lst=parser.items("default")
+lst=parser.items("minimum")
 diksh=dict()
 for k,v in lst:
 	diksh[k]=v
